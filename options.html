@@ -1,34 +1,38 @@
 <!doctype html>
 <html>
 <head>
-	<title>Live Seqence Extension Options</title>
+	<title>Live Sequence Options</title>
 	<style>
 		#api-domain, select { width: 300px; margin: 15px; }
 		label { width: 300px; display: inline-block; }
+		.options-container { margin: 100px auto; border: 1px solid #666; width: 650px; padding: 20px; background: #efefef; color: #333; }
+		h1 { margin-top: 0px; text-decoration: underline; }
 	</style>
 </head>
 <body>
-	<h1>Live Seqence Extension Options</h1>
-	<label for="api-domain">Diagram service API:</label><input type="textbox" id="api-domain" name="api-domain" value="http://www.websequencediagrams.com" />
-	
-	<br />
-	
-	<label for="stylechice">Style:</label>
-	<select id="stylechoice" style="width=200">
-		<option value="default">Plain UML</option>
-		<option value="rose">Rose</option>
-		<option value="qsd">qsd</option>
-		<option selected="selected" value="napkin">napkin</option>
-		<option value="vs2010">vs2010</option>
-		<option value="mscgen">mscgen</option>
-		<option value="omegapple">Omegapple</option>
-		<option value="modern-blue">Blue Modern</option>
-		<option value="earth">Green Earth</option>
-		<option value="roundgreen">RoundGreen</option>
-	</select>
-	<br>
-	<div id="status"></div>
-	<button id="save">Save</button>
+	<div class="options-container">
+		<h1>Live Sequence Options</h1>
+		<label for="api-domain">Diagram service API:</label><input type="textbox" id="api-domain" name="api-domain" value="http://www.websequencediagrams.com" />
+		
+		<br />
+		
+		<label for="stylechice">Style:</label>
+		<select id="stylechoice" style="width=200">
+			<option value="default">Plain UML</option>
+			<option value="rose">Rose</option>
+			<option value="qsd">qsd</option>
+			<option selected="selected" value="napkin">napkin</option>
+			<option value="vs2010">vs2010</option>
+			<option value="mscgen">mscgen</option>
+			<option value="omegapple">Omegapple</option>
+			<option value="modern-blue">Blue Modern</option>
+			<option value="earth">Green Earth</option>
+			<option value="roundgreen">RoundGreen</option>
+		</select>
+		<br>
+		<div id="status"></div>
+		<button id="save">Save</button>
+	</div>
 	<script src="options.js"></script>
 </body>
 </html>
