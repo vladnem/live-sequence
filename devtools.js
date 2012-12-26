@@ -6,8 +6,8 @@ function getRequestBody(messages){
 	}
 	
 	var options = {
-		message: body,
 		style: "napkin",
+		message: body,
 		scale: 100,
 		paginate:0,
 		paper: "letter",

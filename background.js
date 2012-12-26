@@ -1,6 +1,11 @@
 chrome.extension.onMessage.addListener(function(request, sender, callback) {
 	console.log("diagram refresh reqest");
 	var domain = "http://www.websequencediagrams.com";
+	
+	if (localStorage["api"]){
+		domain = localStorage["api"];
+	}
+	
 	getData(request.body, domain, callback);
 	return true;
 });
