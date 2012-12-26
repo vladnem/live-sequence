@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+	<script>
+	console.log("Alice->Bob: Authentication Request");
+	console.log("note right of Bob: Bob thinks about it");
+	console.log("Bob->Alice: Authentication Response");
+	</script>
+</head>
+<body>
+	<h1>sample page</h1>
+	<p>The form below adds content to the console, the diagram should update automatically:</p>
+	<input type="text" value="Alice->Bob: test message" id="test" />
+	<input type="button" value="go" onclick="console.log(document.getElementById('test').value)" />
+</body>
+</html>
