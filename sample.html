@@ -1,16 +1,75 @@
 <!doctype html>
 <html>
 <head>
-	<script>
-	console.log("Alice->Bob: Authentication Request");
-	console.log("note right of Bob: Bob thinks about it");
-	console.log("Bob->Alice: Authentication Response");
-	</script>
+	<style>
+		.container { position: absolute; bottom: 0; }
+		.content { position: relative; height: 150px; }
+		.section { width: 200px; text-align: center; display: inline-block; }
+		.piece { border: 1px solid blue; margin: 10px auto; height: 20px;}
+		#piece_1 { width: 50px; }
+		#piece_2 { width: 75px; }
+		#piece_3 { width: 100px; }
+		#piece_4 { width: 125px; }
+	</style>
 </head>
 <body>
-	<h1>sample page</h1>
-	<p>The form below adds content to the console, the diagram should update automatically:</p>
-	<input type="text" value="Alice->Bob: test message" id="test" />
-	<input type="button" value="go" onclick="console.log(document.getElementById('test').value)" />
+	<h1>Hanoi towers</h1>
+	<p>Moving the pieces will generate console logs, the diagram will update automatically (inspect page & chose Live Sequence tab)</p>
+	<div class="content">
+		<div class="container">
+			<div class="section area_A">
+				<div class="piece" id="piece_1"></div>
+				<div class="piece" id="piece_2"></div>
+				<div class="piece" id="piece_3"></div>
+				<div class="piece" id="piece_4"></div>
+				<input type="button" value="A" onclick="pick(this)" />
+			</div>
+		
+			<div class="section area_B">
+				<input type="button" value="B" onclick="pick(this)" />
+			</div>
+			
+			<div class="section area_C">
+				<input type="button" value="C" onclick="pick(this)" />
+			</div>
+		</div>
+	</div>
+	<script>
+	var picked = null;
+	
+	function move(start, end){
+		if (start == end){
+			console.log(start + "->" + start + ": cannot move a piece on itself");
+			return;
+		}
+		
+		var piece = document.querySelector(".area_" + start + " .piece");
+		if (!piece){
+			console.log(start + "->" + start + ": error, no piece to move");
+		} else {
+			var next = document.querySelector(".area_" + end + " .piece");
+
+			if (next && (piece.id > next.id)){
+				console.log(start + "->" + start + ": cannot move on top of smaller piece");
+			} else {
+				if (!next){
+					next = document.querySelector(".area_" + end + " input");
+				}
+				document.querySelector(".area_" + end).insertBefore(piece, next);
+				console.log(start + "->" + end + ": move");
+			}
+		}
+	}
+	
+	function pick(e){
+		if (!picked){
+			picked = e.value;
+		} else {
+			move(picked, e.value);
+			picked = null;
+		}
+	}
+	</script>
+
 </body>
 </html>

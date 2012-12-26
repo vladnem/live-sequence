@@ -7,11 +7,11 @@ function getRequestBody(messages){
 	
 	var options = {
 		message: body,
-		style: "default",
+		style: "napkin",
 		scale: 100,
 		paginate:0,
 		paper: "letter",
-		landscape: 0,
+		landscape: 1,
 		format: "png",
 		apiVersion: 1,
 		width: 916
@@ -21,7 +21,7 @@ function getRequestBody(messages){
 }
 
 chrome.devtools.panels.create("Live Sequence",
-                              "livesequence.jpg",
+                              "",
                               "panel.html",
                               
     function(panel) {
@@ -38,11 +38,15 @@ chrome.devtools.panels.create("Live Sequence",
 						console.log(body);
 						chrome.extension.sendMessage({body: body}, function (response) {
 							if (response) {
-								lastRequest = messages.length;
 								console.log("devtools js updating diagram for " + response);
 								var image = window.document.getElementById("diagram");
 								image.src = response;
-								image.style.display = "block";
+								
+								if (lastRequest == -1) {
+									image.style.display = "block";
+								}
+								
+								lastRequest = messages.length;
 								//window.scrollTop = window.scrollHeight;
 							} else {
 								console.log("devtools js message sent; no response");
@@ -54,7 +58,7 @@ chrome.devtools.panels.create("Live Sequence",
 
 			drawDiagram();
 			if (!interval){
-				interval = setInterval(drawDiagram, 1500);
+				interval = setInterval(drawDiagram, 1000);
 			}
 		});
 		
