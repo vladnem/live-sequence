@@ -5,8 +5,14 @@ function getRequestBody(messages){
 		body += messages[i].text + "\n";
 	}
 	
+	var style = "napkin";
+	
+	if (localStorage["style"]){
+		style = localStorage["style"];
+	}
+	
 	var options = {
-		style: "napkin",
+		style: style,
 		message: body,
 		scale: 100,
 		paginate:0,
