@@ -31,10 +31,11 @@ chrome.devtools.panels.create("Live Sequence",
                               "panel.html",
                               
     function(panel) {
+		var lastRequest = -1;
+		var interval = null;
+
 		panel.onShown.addListener(function (window) {
 			console.log("devtools js on show");
-			var lastRequest = -1;
-			var interval = null;
 
 			function drawDiagram() {
 				console.log("draw diagram");
@@ -45,7 +46,7 @@ chrome.devtools.panels.create("Live Sequence",
 						chrome.extension.sendMessage({body: body}, function (response) {
 							if (response) {
 								console.log("devtools js updating diagram for " + response);
-								var image = window.document.getElementById("diagram");
+								var image = window.document.getElementById("diagram");								
 								image.src = response;
 								
 								if (lastRequest == -1) {
@@ -67,5 +68,12 @@ chrome.devtools.panels.create("Live Sequence",
 				interval = setInterval(drawDiagram, 1000);
 			}
 		});
-		
+
+		panel.onHidden.addListener(function (window) {
+			var image = window.document.getElementById("diagram");
+			image.style.display = "block";
+			lastRequest == -1;
+								
+			clearInterval(interval);
+		});
 });
