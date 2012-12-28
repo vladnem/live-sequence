@@ -29,7 +29,11 @@ function getData(body, domain, callback){
 	try {
 		var response = JSON.parse(xhr.responseText);
 		if (response.img) {
-			callback(domain + page + response.img);
+			if (response.naturalWidth != 0) {
+				callback({image: domain + page + response.img, errors: response.errors});
+			} else {
+				callback({image: null, errors: []});
+			}
 		}
 	} catch (e){
 		;

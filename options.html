@@ -3,16 +3,47 @@
 <head>
 	<title>Live Sequence Options</title>
 	<style>
-		#api-domain, select { width: 300px; margin: 15px; }
+		#api-domain, select { width: 300px; margin: 15px; background: #fefefe; border: 1px solid #afafaf; }
 		label { width: 300px; display: inline-block; }
-		.options-container { margin: 100px auto; border: 1px solid #666; width: 650px; padding: 20px; background: #efefef; color: #333; box-shadow: 0 0 12px 0px #333; font-family: Tahoma;}
-		h1 { margin-top: 0px; text-decoration: underline; }
+		.options-container { margin: 40px auto; border: 1px solid #666; width: 635px; padding: 20px; background: #efefef; color: #333; box-shadow: 0 0 12px 0px #333; font-family: Tahoma; height: 200px; font-size: 13px; }
+		h1 { padding: 10px; margin: -20px -20px 0 -20px; background: -webkit-gradient(linear, left top, left bottom, from(rgba(198, 213, 224, 0.9)),to(rgba(161, 190, 211, 2.9))); color: #fff; }
+		.form { margin-left: 398px; width: 225px; margin-top: 4px; }
+		.form #save, .form #reset, .form div { display: inline-block; }
+		.form #save, .form #reset { float: right; }
+		.form div { margin-top: 6px; }
+		p { font-size: 11px; float: left; margin-top: 10px; }
+		p a { color: #2789ce; text-decoration: none; }
+		p a:hover { text-decoration: underline; }
+		#show-errors { margin: 15px; }
+		#status { font-size: 11px; }
+		
+		.kd-button-submit {
+			border: 1px solid #505050;
+			color: white;
+			border-color: #3079ED;
+			background-color: #4D90FE;
+			background-image: -webkit-gradient(linear,left top,left bottom,from(#4D90FE),to(#4787ED));
+			background-image: -webkit-linear-gradient(top,#4D90FE,#4787ED);
+			display: inline-block;
+			min-width: 54px;
+			text-align: center;
+			font-size: 11px;
+			font-weight: bold;
+			height: 27px;
+			padding: 0 8px;
+			line-height: 27px;
+			-webkit-border-radius: 2px;
+			border-radius: 2px;
+			-webkit-transition: all 0.218s;
+			text-decoration: none;
+			cursor: default;
+		}
 	</style>
 </head>
 <body>
 	<div class="options-container">
 		<h1>Live Sequence Options</h1>
-		<label for="api-domain">Diagram service API:</label><input type="textbox" id="api-domain" name="api-domain" value="http://www.websequencediagrams.com" />
+		<label for="api-domain">Diagram service API (corporate hosted versions):</label><input type="textbox" id="api-domain" name="api-domain" value="http://www.websequencediagrams.com" />
 		
 		<br />
 		
@@ -21,7 +52,7 @@
 			<option value="default">Plain UML</option>
 			<option value="rose">Rose</option>
 			<option value="qsd">qsd</option>
-			<option selected="selected" value="napkin">napkin</option>
+			<option value="napkin">napkin</option>
 			<option value="vs2010">vs2010</option>
 			<option value="mscgen">mscgen</option>
 			<option value="omegapple">Omegapple</option>
@@ -29,9 +60,15 @@
 			<option value="earth">Green Earth</option>
 			<option value="roundgreen">RoundGreen</option>
 		</select>
+		
+		<label for="show-errors">Show toolbar:</label>
+		 <input type="checkbox" name="show-errors" id="show-errors" value=""  />
 		<br>
-		<div id="status"></div>
-		<button id="save">Save</button>
+		<p>The inspected application should write console logs in the format specified <a href="http://www.websequencediagrams.com/examples.html" target="_blank">here</a>.</p>
+		<div class="form">
+			<div id="status"></div>
+			<button id="reset" class="kd-button-submit">Reset to defaults</button>
+		</div>
 	</div>
 	<script src="options.js"></script>
 </body>

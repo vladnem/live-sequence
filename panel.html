@@ -1,7 +1,108 @@
 <!doctype html>
 <html>
-<head></head>
+<head>
+<style>
+	#diagram { max-width: 100%; margin: 5px auto 0 auto; }
+	#loading { left: 50%; top: 100px; display: block; position: fixed; }
+	#errors { font-size: 12px; background: #ededed; padding: 5px; max-width: 300px; position: absolute; right:10px; z-index: 50; top: 30px; display: none; box-shadow: 0 0 12px 0px #333;}
+	#error-toggle { position: absolute; right: 5px; top: 5px; z-index: 70; }
+	
+	#error-toggle {
+		border: 1px solid;
+		border-radius: 2px;
+		cursor: pointer;
+		display: inline-block;
+		font-weight: bold;
+		margin: 0;
+		min-width: 54px;
+		height: 28px;
+		padding: 0 8px;
+		text-align: center;
+		background-color: #d14836;
+		background-image: linear-gradient(top, #dd4b39, #d14836);
+		border-color: transparent;
+		text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+		color: #fff;
+		font-size: 11px;
+		text-transform: uppercase;
+		font-family: Arial, Helvetica, sans-serif;
+		-webkit-border-radius: 2px;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#dd4b39), to(#d14836));
+		background-image: -webkit-linear-gradient(top, #dd4b39, #d14836);
+	}
+	#error-toggle div {
+		height: 27px;
+		line-height: 27px;
+	}
+
+	#share { display: block; position: absolute; right: 80px; top: 5px; z-index: 70; display: none; }
+	ul { list-style: none; text-indent: 5px; margin: 0; padding: 0; }
+	.help { text-decoration: none; color: #2789ce; }
+	.help:hover { text-decoration: underline; }
+	#missing { display: none; font-size: 12px; }
+	#missing h1 { padding: 10px; margin: 0; background: -webkit-gradient(linear, left top, left bottom, from(rgba(198, 213, 224, 0.9)),to(rgba(161, 190, 211, 2.9))); color: #fff; }
+	#missing p { padding: 5px 10px 0 10px; }
+	#missing a { text-decoration: none; color: #2789ce; }
+	#missing a:hover { text-decoration: underline; }
+	#missing div { padding-left: 20px; }
+	body, html { margin: 0; padding: 0; }
+	#toolbar {
+		height: 34px;
+		width: 100%;
+		background-color: #f5f5f5;
+		border-bottom: 1px solid #ccc;
+		padding-top: 4px;
+		z-index: 10;
+		position: relative;
+	}
+	#share {
+		border: 1px solid #505050;
+		color: white;
+		border-color: #3079ED;
+		background-color: #4D90FE;
+		background-image: -webkit-gradient(linear,left top,left bottom,from(#4D90FE),to(#4787ED));
+		background-image: -webkit-linear-gradient(top,#4D90FE,#4787ED);
+		display: inline-block;
+		min-width: 54px;
+		text-align: center;
+		font-size: 11px;
+		text-transform: uppercase;
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: bold;
+		height: 27px;
+		padding: 0 8px;
+		line-height: 27px;
+		-webkit-border-radius: 2px;
+		border-radius: 2px;
+		-webkit-transition: all 0.218s;
+		text-decoration: none;
+		cursor: default;
+	}
+</style>
+</head>
 <body>
+	<div id="toolbar">
+		<a id="share" href="#" target="_blank">Share</a>
+		<button id="error-toggle"><div>Errors</div></button>
+	</div>
 	<img id="diagram" style="display: none" />
+	<img id="loading" src="loading.gif" />
+	<div id="errors">
+		<p>The following console lines cannot be processed as they are not compliant with the <a href="http://www.websequencediagrams.com/examples.html" target="_blank" class="help">diagram spec</a>.</p>
+		<p>Error list:</p>
+		<ul id="error-list">
+		</ul>
+	</div>
+	<div id="missing">
+		<h1>Live Sequence</h1>
+		<p>No logs were found that could be used to generate the flow chart.</p>
+		<p>In order to visualize the apllication execution flow you need to generate console logs according to the web sequence diagram <a href="http://www.websequencediagrams.com/examples.html" target="_blank">specifications</a>:
+		</p>
+		<div>
+			console.log("Entity1->Server: request data");<br />
+			console.log("Server->Entity1: respond with data\\nin json format");<br />
+			console.log("Entity1->Browser: update html");
+		</div>
+	</div>
 </body>
 </html>
