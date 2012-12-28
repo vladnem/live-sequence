@@ -6,7 +6,12 @@
 		#api-domain, select { width: 300px; margin: 15px; background: #fefefe; border: 1px solid #afafaf; }
 		label { width: 300px; display: inline-block; }
 		.options-container { margin: 40px auto; border: 1px solid #666; width: 635px; padding: 20px; background: #efefef; color: #333; box-shadow: 0 0 12px 0px #333; font-family: Tahoma; height: 200px; font-size: 13px; }
-		h1 { padding: 10px; margin: -20px -20px 0 -20px; background: -webkit-gradient(linear, left top, left bottom, from(rgba(198, 213, 224, 0.9)),to(rgba(161, 190, 211, 2.9))); color: #fff; }
+		h1 { 
+		text-indent: 40px;
+		padding: 10px; margin: -20px -20px 0 -20px; 
+		background: -webkit-gradient(linear, left top, left bottom, from(rgba(198, 213, 224, 0.9)),to(rgba(161, 190, 211, 2.9))); 
+		color: #fff; }
+		h1 img { position: absolute; margin-left: -40px; }
 		.form { margin-left: 398px; width: 225px; margin-top: 4px; }
 		.form #save, .form #reset, .form div { display: inline-block; }
 		.form #save, .form #reset { float: right; }
@@ -42,7 +47,7 @@
 </head>
 <body>
 	<div class="options-container">
-		<h1>Live Sequence Options</h1>
+		<h1><img src="live-sequence.png" />Live Sequence Options</h1>
 		<label for="api-domain">Diagram service API (corporate hosted versions):</label><input type="textbox" id="api-domain" name="api-domain" value="http://www.websequencediagrams.com" />
 		
 		<br />

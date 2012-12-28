@@ -5,6 +5,7 @@
   "devtools_page": "devtools.html",
   "manifest_version": 2,
   "options_page": "options.html",
+  "icons": {"48": "live-sequence.png"},
   "background": {
 	"scripts": ["background.js"],
 	"persistent": false
