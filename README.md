@@ -4,6 +4,8 @@ Live Sequence
 This extension adds a new panel in the devtools of chrome browser that displays diagrams generated from the console logs in realime.
 websequencediagrams.com API generates the diagrams - see http://www.websequencediagrams.com/examples.html for syntax details.
 
+![](https://s3.amazonaws.com/shareassets/live-sequence/screenshot.png)
+
 ## Installation
 
 Enable "Experimental Extension APIs" from chrome://flags/ (the extensions uses the console API that is not enabled by default)
