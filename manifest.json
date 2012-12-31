@@ -7,7 +7,10 @@
   "default_locale": "en",
   "offline_enabled": true,
   "options_page": "options.html",
-  "icons": {"48": "live-sequence.png"},
+  "icons": {
+	"16": "live-sequence16.png",
+	"48": "live-sequence.png"
+  },
   "background": {
 	"scripts": ["background.js"],
 	"persistent": false
