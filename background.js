@@ -36,6 +36,6 @@ function getData(body, domain, callback){
 			}
 		}
 	} catch (e){
-		;
+		callback({image: null, errors: []});
 	}
 };

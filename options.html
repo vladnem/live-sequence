@@ -5,7 +5,7 @@
 	<style>
 		#api-domain, select { width: 300px; margin: 15px; background: #fefefe; border: 1px solid #afafaf; }
 		label { width: 300px; display: inline-block; }
-		.options-container { margin: 40px auto; border: 1px solid #666; width: 635px; padding: 20px; background: #efefef; color: #333; box-shadow: 0 0 12px 0px #333; font-family: Tahoma; height: 200px; font-size: 13px; }
+		.options-container { margin: 40px auto; border: 1px solid #666; width: 635px; padding: 20px; background: #efefef; color: #333; box-shadow: 0 0 12px 0px #333; font-family: Tahoma; height: 242px; font-size: 13px; }
 		h1 { 
 		text-indent: 40px;
 		padding: 10px; margin: -20px -20px 0 -20px; 
@@ -19,7 +19,7 @@
 		p { font-size: 11px; float: left; margin-top: 10px; }
 		p a { color: #2789ce; text-decoration: none; }
 		p a:hover { text-decoration: underline; }
-		#show-errors { margin: 15px; }
+		#show-errors, #autonumber { margin: 15px; }
 		#status { font-size: 11px; }
 		
 		.kd-button-submit {
@@ -43,6 +43,7 @@
 			text-decoration: none;
 			cursor: default;
 		}
+		.note { font-size: 11px; color: #666; display: inline-block; text-indent: 10px; }
 	</style>
 </head>
 <body>
@@ -69,6 +70,12 @@
 		<label for="show-errors">Show toolbar:</label>
 		 <input type="checkbox" name="show-errors" id="show-errors" value=""  />
 		<br>
+
+		<label for="autonumber">Autonumber:<span class="note">(websequencediagrams premium feature)</span></label>
+		 <input type="checkbox" name="autonumber" id="autonumber" value=""  />
+		 
+		<br>
+
 		<p>The inspected application should write console logs in the format specified <a href="http://www.websequencediagrams.com/examples.html" target="_blank">here</a>.</p>
 		<div class="form">
 			<div id="status"></div>

@@ -10,6 +10,8 @@ function saveOptions() {
   
   localStorage["toolbar"] = document.getElementById("show-errors").checked;
   
+  localStorage["autonumber"] = document.getElementById("autonumber").checked;
+
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
   status.innerHTML = "Options Saved.";
@@ -32,6 +34,13 @@ document.addEventListener('DOMContentLoaded',function(){
 		 document.getElementById("show-errors").checked = false;
 	}
 	
+	var errors = localStorage["autonumber"];
+	if (errors && (errors == "true")) {
+		 document.getElementById("autonumber").checked = true;
+	} else {
+		 document.getElementById("autonumber").checked = false;
+	}
+	
 	var style = localStorage["style"];
 	if (style) {
 		var select = document.getElementById("stylechoice");
@@ -47,6 +56,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 function resetOptions() {
 	document.getElementById("show-errors").checked = true;
+	document.getElementById("autonumber").checked = false;
 	document.getElementById("api-domain").value = "http://www.websequencediagrams.com";
 
 	var select = document.getElementById("stylechoice");
@@ -63,6 +73,7 @@ function resetOptions() {
 };
 
 document.querySelector('#show-errors').addEventListener('change', saveOptions);
+document.querySelector('#autonumber').addEventListener('change', saveOptions);
 document.querySelector('#api-domain').addEventListener('blur', saveOptions);
 document.querySelector('#stylechoice').addEventListener('change', saveOptions);
 

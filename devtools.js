@@ -1,6 +1,10 @@
 function getRequestBody(messages){
 	var body = "";
-
+	var autonumber = localStorage["autonumber"];
+	if (autonumber && (autonumber == "true")){
+		body = "autonumber 0\n";
+	}
+			
 	for (var i = 0; i < messages.length; i++){
 		body += messages[i].text + "\n";
 	}
@@ -67,7 +71,7 @@ chrome.devtools.panels.create("Live Sequence",
 			function drawDiagram() {
 				console.log("draw diagram");
 				chrome.experimental.devtools.console.getMessages(function (messages){
-					if (messages.length > window.lastRequest) {
+					if (messages.length != window.lastRequest) {
 						var body = getRequestBody(messages);
 						console.log(body);
 						if (body.length > 0) {
@@ -85,6 +89,7 @@ chrome.devtools.panels.create("Live Sequence",
 								console.log("devtools js updating diagram for " + response.image);
 								var image = window.panelWindow.document.getElementById("diagram");
 								image.src = response.image;
+								image.style.display = "block";
 								
 								if (window.lastRequest == -1) {
 									image.style.display = "block";
@@ -113,6 +118,7 @@ chrome.devtools.panels.create("Live Sequence",
 							} else {
 								window.panelWindow.document.getElementById("share").style.display = "none";
 								window.panelWindow.document.getElementById("missing").style.display = "block";
+								window.panelWindow.document.getElementById("diagram").style.display = "none";
 								window.panelWindow.document.getElementById("toolbar").style.display = "none";
 								console.log("devtools js message sent; no response");
 							}
