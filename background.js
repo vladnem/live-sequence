@@ -6,13 +6,12 @@ chrome.extension.onMessage.addListener(function(request, sender, callback) {
 		domain = localStorage["api"];
 	}
 	
+	console.log("background->WSD: get image code from domain\\n" + domain + " and body length " + request.body.message.length);
 	getData(request.body, domain, callback);
 	return true;
 });
 
 function getData(body, domain, callback){
-	console.log("get data");
-		
 	var page = "/index.php";
 	
 	var params = [];
@@ -27,15 +26,19 @@ function getData(body, domain, callback){
 	xhr.send(params.join("&"));
 
 	try {
+		console.log("WSD->backgound: some response received");
 		var response = JSON.parse(xhr.responseText);
 		if (response.img) {
 			if (response.naturalWidth != 0) {
-				callback({image: domain + page + response.img, errors: response.errors});
+				console.log("backgound->panel: correct data\\nrequest paint");
+				callback({image: domain + page + response.img, errors: response.errors, status: "retry"});
 			} else {
-				callback({image: null, errors: []});
+				console.log("backgound->panel: 0 width image\\nrequest retry");
+				callback({image: null, errors: [], status: "final"});
 			}
 		}
 	} catch (e){
-		callback({image: null, errors: []});
+		console.log("backgound->panel: wrong response format\\nrequest retry");
+		callback({image: null, errors: [], status: "retry"});
 	}
 };
